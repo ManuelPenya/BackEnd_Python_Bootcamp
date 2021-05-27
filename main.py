@@ -1,16 +1,75 @@
-# This is a sample Python script.
+from serie import Serie
+from videojuego import Videojuego
+import random as rd
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+tipos_videojuegos = ['Accion', 'Aventura', 'Infantil', 'Multiplataforma', 'Coches']
+tipos_series = ['Accion', 'Aventura', 'Infantil', 'Romantica', 'Intriga']
+creadores = ['AAA', 'BBB', 'CCC', 'DDD', 'EEE']
+companyias = ['Nintendo', 'Play', 'Xbox']
+
+def imprimir_mayor(array):
+    length = len(array)
+    if hasattr(array[0], 'num_temporadas'):
+        time_array = [array[i].num_temporadas for i in range(length)]
+        maximum = max(time_array)
+        position = time_array.index(maximum)
+        print('La serie con más temporadas es:')
+        print(array[position])
+    elif hasattr(array[0], 'horas'):
+        time_array = [array[i].horas for i in range(length)]
+        maximum = max(time_array)
+        position = time_array.index(maximum)
+        print('El videojuego con más horas estimadas es:')
+        print(array[position])
+
+series = []
+videojuegos = []
+for i in range(5):
+    nombre_serie = f'serie{i}'
+    escoger_tipo = rd.randint(0, 4)
+    tipo = tipos_series[escoger_tipo]
+    escoger_creador = rd.randint(0, 4)
+    creador = creadores[escoger_creador]
+    num_temporadas = rd.randint(0, 10)
+    series.append(Serie(titulo=nombre_serie,
+                        genero=tipo,
+                        creador=creador,
+                        num_temporadas=num_temporadas))
+
+    nombre_videojuego = f'videojuego{i}'
+    escoger_tipo = rd.randint(0, 4)
+    tipo = tipos_videojuegos[escoger_tipo]
+    escoger_companyia = rd.randint(0, 2)
+    companyia = companyias[escoger_companyia]
+    horas = rd.randint(0, 10)
+    videojuegos.append(Videojuego(titulo=nombre_videojuego,
+                                  genero=tipo,
+                                  companyia=companyia,
+                                  horas=horas))
+
+series[0].entregar()
+series[2].entregar()
+series[4].entregar()
+
+videojuegos[1].entregar()
+videojuegos[4].entregar()
+
+counter = 0
+for i in range(5):
+    if series[i].is_entregado():
+        counter += 1
+        print(f'{series[i].titulo} está prestada')
+print(f'Tenemos {counter} series prestadas')
+
+counter = 0
+for i in range(5):
+    if videojuegos[i].is_entregado():
+        counter += 1
+        print(f'{videojuegos[i].titulo} está prestado')
+print(f'Tenemos {counter} videojuegos prestados')
+
+imprimir_mayor(series)
+imprimir_mayor(videojuegos)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
