@@ -56,3 +56,16 @@ class Videojuego(Entregable):
                'Compañía: ' + str(self.__companyia) + '\n' + \
                'Número de horas: ' + str(self.__horas) + '\n' + \
                'Entregado: ' + str(self.is_entregado())
+
+    def compare_to(self, objeto):
+
+        if hasattr(objeto, 'horas'):
+            if self.horas > objeto.horas:
+                print(f'{self.titulo} tiene más horas estimadas ({self.horas}) que {objeto.titulo} ({objeto.horas})')
+            elif self.horas < objeto.horas:
+                print(f'{self.titulo} tiene menos horas estimadas ({self.horas}) que {objeto.titulo} ({objeto.horas})')
+            else:
+                print(f'{self.titulo} y {objeto.titulo} tienen las mismas horas estimadas: ({self.horas})')
+        else:
+            print(f'Estás comparando {self.titulo} con una serie. \nPor favor compara objetos del mismo tipo')
+

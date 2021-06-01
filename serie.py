@@ -58,3 +58,16 @@ class Serie(Entregable):
             'Creador: ' + str(self.__creador) + '\n' + \
             'Número de temporadas: ' + str(self.__num_temporadas) + '\n' + \
             'Prestada: ' + str(self.is_entregado())
+
+    def compare_to(self, objeto):
+
+        if hasattr(objeto, 'num_temporadas'):
+            if self.num_temporadas > objeto.num_temporadas:
+                print(f'{self.titulo} tiene más temporadas ({self.num_temporadas}) que {objeto.titulo} ({objeto.num_temporadas})')
+            elif self.num_temporadas < objeto.num_temporadas:
+                print(f'{self.titulo} tiene menos temporadas ({self.num_temporadas}) que {objeto.titulo} ({objeto.num_temporadas})')
+            else:
+                print(f'{self.titulo} y {objeto.titulo} tienen las mismas temporadas: ({self.num_temporadas})')
+        else:
+            print(
+                f'Estás comparando {self.titulo} con un videojuego. \nPor favor compara objetos del mismo tipo')
