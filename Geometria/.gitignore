@@ -1,0 +1,5 @@
+# Folders to not be commited
+
+venv/
+.idea/
+*/__pycache__/
