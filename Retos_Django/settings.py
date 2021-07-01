@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bookstore.apps.BookstoreConfig',
     'hero_api.apps.HeroApiConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -78,8 +79,12 @@ WSGI_APPLICATION = 'Retos_Django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bookstore',
+        'USER': 'manuelpenya',
+        'PASSWORD': 'OnyerreI*1',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

@@ -2,6 +2,9 @@
 /lib/
 /lib64/
 .idea/
+/__pycache__/
+Retos_Django/__pycache__/
+bookstore/__pycache__/
 
 pyvenv.cfg
 
